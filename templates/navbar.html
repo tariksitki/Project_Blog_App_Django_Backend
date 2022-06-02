@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+
+  <body>
+    <nav class="navbar navbar-expand-md bg-info fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% comment %}
+        {% url 'home'  %}
+        {% endcomment %}
+        <a class="navbar-brand" href=""> Tarik's Blog</a>
+
+        <div class="collapse navbar-collapse fw-bold" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                {% comment %}
+                {% url 'home'  %}
+                {% endcomment %}
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item active">
+                
+                {% comment %}
+                {% url 'about' %}
+                {% endcomment %}
+              <a class="nav-link" href="">About</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ms-auto">
+            {% comment %}
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+            {% endcomment %}
+
+
+            <li class="nav-item active">
+              {% comment %}
+              /admin
+              {% endcomment %}
+                
+              <a class="nav-link" href="">Admin</a>
+            </li>
+            {% comment %}
+            {% endif %}
+            {% endcomment %}
+            
+            <li class="nav-item active">
+              {% comment %}
+              
+              {% url 'logout' %} 
+              {% endcomment %}
+              <a class="nav-link" href="">Log Out</a>
+            </li>
+            <li class="nav-item active">
+              {% comment %} {% url 'add_blog' %} {% endcomment %}
+
+              {% comment %}
+              {% url 'profile' %}
+              {% endcomment %}
+              <a class="nav-link" href="">Profile</a>
+            </li>
+            <li class="nav-item active">
+              {% comment %} {% url 'add_blog' %} {% endcomment %}
+
+              {% comment %}
+              {% url 'post_add'  %}
+              {% endcomment %}
+              <a class="nav-link" href="">New Post</a>
+            </li>
+            {% comment %}
+            {% else %}
+            {% endcomment %}
+
+            <li class="nav-item active">
+              
+              {% comment %}
+              {% url 'login' %}
+              {% endcomment %}
+                
+              <a class="nav-link" href="">Login</a>
+            </li>
+            
+            {% comment %}
+            {% endif %}
+              
+            {% endcomment %}
+              
+
+            <li class="nav-item active">
+              
+              {% comment %}
+              {% url 'register' %}
+              {% endcomment %}
+                
+              <a class="nav-link" href="">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>
