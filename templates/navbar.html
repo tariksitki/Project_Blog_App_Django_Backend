@@ -26,7 +26,7 @@
         {% comment %}
         {% url 'home'  %}
         {% endcomment %}
-        <a class="navbar-brand" href=""> Tarik's Blog</a>
+        <a class="navbar-brand" href="{% url 'home' %}"> Tarik's Blog</a>
 
         <div class="collapse navbar-collapse fw-bold" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -34,7 +34,7 @@
                 {% comment %}
                 {% url 'home'  %}
                 {% endcomment %}
-              <a class="nav-link" href="">Home</a>
+              <a class="nav-link" href="{% url 'home'  %}">Home</a>
             </li>
             <li class="nav-item active">
                 
@@ -57,7 +57,10 @@
               /admin
               {% endcomment %}
                 
-              <a class="nav-link" href="">Admin</a>
+              {% comment %}
+              Kendisi icin view yazilan ve url icinde bir view return eden adresler icin url li olan kodu yaziyoruz. admin icin ise herhangi bir view dönmemekte ve bu url in name i bulunmamakta. bu nedenle bu sekilde yaziyoruz.
+              {% endcomment %}
+              <a class="nav-link" href="/admin">Admin</a>
             </li>
             {% comment %}
             {% endif %}
@@ -68,8 +71,9 @@
               
               {% url 'logout' %} 
               {% endcomment %}
-              <a class="nav-link" href="">Log Out</a>
+              <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
             </li>
+
             <li class="nav-item active">
               {% comment %} {% url 'add_blog' %} {% endcomment %}
 
@@ -96,7 +100,7 @@
               {% url 'login' %}
               {% endcomment %}
                 
-              <a class="nav-link" href="">Login</a>
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             
             {% comment %}
@@ -111,7 +115,7 @@
               {% url 'register' %}
               {% endcomment %}
                 
-              <a class="nav-link" href="">Register</a>
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
           </ul>
         </div>
@@ -119,3 +123,6 @@
     </nav>
   </body>
 </html>
+
+
+

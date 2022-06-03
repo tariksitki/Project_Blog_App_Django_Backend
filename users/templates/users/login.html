@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "base.html" %} 
+{% load static %} 
+<!-- {% load bootstrap5 %} -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% block content %} 
+    <h3>LOGIN</h3>
+    <div class="container">
+        {% load crispy_forms_tags %}
+        <form action="" method="POST">
+          {% csrf_token %} 
+          <!-- {% bootstrap_form form %} -->
+          <!-- {{ form.as_p }} -->
+          {{ form | crispy }}
+          <input type="submit" value="Login">
+        </form>
+    </div>
+    <br>
+    {% comment %}    {% url 'reset-password' %}  {% endcomment %}
+    <a href=""> Forget Password </a>
+    <br>  <hr>
+    {% comment %}    {% url 'register' %}  {% endcomment %}
+    <p> You have not an account? <a href="{% url 'register' %}">Register Now</a> </p>
+
+
+    {% endblock content %}
+  </body>
+</html>
