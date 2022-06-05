@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from blog.views import postListView
 ## Not:  baska bir app den import ederken / ile yada .. ile bir üst klasöre cikmak diye birsey yok. direkt olarak app in adi yatilir ve dod notation yapilir.
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', postListView, name="home"),
+    # path('', postListView, name="home"),
+    path('', include("blog.urls")),
     path('users/', include("users.urls")),
 
 
