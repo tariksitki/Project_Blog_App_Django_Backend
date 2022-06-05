@@ -1,18 +1,52 @@
 <!DOCTYPE html>
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %}
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     {% block content %}
-        
+    <h1 class="text-center">BLOG APPP</h1>
+    <div class="container">
+      <div class="row row-cols-3">
+        {% for post in posts %}
+        <div class="col-4 mt-3 mb-2">
+          <div class="card">
+            <img
+              src="{{ post.image }}"
+              alt="{{ post.title }}"
+              class="card-img-top"
+            />
+            <div class="card-body">
+              <h5 class="card-title"><a href=""> {{ post.title }} </a></h5>
+              <p class="card-text text-line">
+                {% if post.content|length > 100 %}
+                {{ post.content|slice:"0:200" }} ...
+                 {% else %}
+                  {{ post.content }}
+                {% endif %}
+              </p>
+                <small>
+                    <i class="bi bi-star"></i> {{ post.likeCount }}
+                    <i class="bi bi-eye-fill"></i> {{ post.viewCount }}
+                    <i class="bi bi-chat"></i> {{ post.commentCount }}
+                </small>
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">Posted {{ post.publish_date | timesince }} ago</small>
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
 
     {% endblock content %}
-
-</body>
+  </body>
 </html>

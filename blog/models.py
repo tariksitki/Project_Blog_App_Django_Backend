@@ -77,9 +77,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title 
 
+    #  ana sayfada contentin bir kısmını görüntülemek için
 
 
 
+#### Önemli Not: Admin panel de post olustururken bize category secenegi sunmaz. Cünkü admin panelde her bir tablo yani model ayri bir sekilde ele alinir. Ancak biz her post olusturdugumuzda otomatik olarak category de olusturmamiz gerekir. Cünkü en basitinden update ederken bu iki tablodan geleck bilgi bize muhakkak lazim. Bu nedenle biz create sayfasinda post olustururken iki tabloyu birlestiriyoruz.
 
 class Category(models.Model):
     CHOICES = (
